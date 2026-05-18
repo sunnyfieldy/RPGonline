@@ -25,13 +25,16 @@ public class PlayerController : MonoBehaviour
     private NavMeshAgent agent;
     private Target currentTarget;
     private Equipment equipment;
-    
+
+    private Animator animator;
     void Start()
     {
         equipment = GetComponent<Equipment>();
         agent = GetComponent<NavMeshAgent>();
         aimVisual.gameObject.SetActive(false);
         attackTimer = attackInterval;
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -39,6 +42,8 @@ public class PlayerController : MonoBehaviour
         HandleInput();
         HandleInteraction();
         HandleCombat();
+
+        animator.SetFloat("Speed", agent.velocity.magnitude, 0.1f, Time.deltaTime);
     }
 
 
@@ -67,8 +72,8 @@ public class PlayerController : MonoBehaviour
         attackTimer += Time.deltaTime;
         if (attackTimer >= attackInterval)
         {
-            //TODO: attack animation
-            
+            animator.SetTrigger("Attack");
+
             attackTimer = 0;
 
             var enemyScript = currentEnemy.GetComponent<Enemy>();
