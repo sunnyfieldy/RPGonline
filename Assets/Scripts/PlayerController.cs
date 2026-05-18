@@ -20,6 +20,12 @@ public class PlayerController : MonoBehaviour
     public float attackInterval = 1.5f;
     public float attackRange = 2.5f;
 
+    [Header("Health Settings")]
+    public int maxHealth = 100;
+    public int currentHealth;
+
+    public Transform healthBar;
+
     private float attackTimer = 0;
     private Transform currentEnemy;
     private NavMeshAgent agent;
@@ -35,6 +41,9 @@ public class PlayerController : MonoBehaviour
         attackTimer = attackInterval;
 
         animator = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        UpdateHealthBar();
     }
 
     void Update()
@@ -176,5 +185,34 @@ public class PlayerController : MonoBehaviour
         
         if(t != null)
             agent.SetDestination(t.position);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth < 0)
+            currentHealth = 0;
+
+        UpdateHealthBar();
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void UpdateHealthBar()
+    {
+        healthBar.localScale = new Vector3((float)currentHealth / maxHealth, 1, 1);
+    }
+
+    void Die()
+    {
+        Debug.Log("Player died");
+
+        // optional:
+        // disable movement
+        // death animation
     }
 }

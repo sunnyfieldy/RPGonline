@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: e2b4a826e050047ccb308add313499b1
+guid: e777c6c3f359c7a4d8fe204b3d7f5dcf
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ch03_Body
-    second: {fileID: 2100000, guid: 9e0813a87969f423f9ac9eedba2fd23f, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch03_1001_Diffuse
-    second: {fileID: 2800000, guid: 8e7b2025f2b0a486ebcd43f2bce28705, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch03_1001_Glossiness
-    second: {fileID: 2800000, guid: 51a38194b7978499a83942b9f6213bac, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch03_1001_Normal
-    second: {fileID: 2800000, guid: 76f04b394c954491c974c9b66a061e7f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch03_1001_Specular
-    second: {fileID: 2800000, guid: f7615164ee88948b18aac0346a6749c8, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -60,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -115,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1.5
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
