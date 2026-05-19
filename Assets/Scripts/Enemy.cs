@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     public int damage = 10;
     public float attackRange = 2f;
     public float attackCooldown = 1.5f;
+    public float detectionRange = 10f;
 
     private float attackTimer;
     private Transform player;
@@ -76,23 +78,38 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (player == null) return;
+
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance <= attackRange)
+        // detect player
+        if (distance <= detectionRange)
         {
-            attackTimer += Time.deltaTime;
-
-            transform.LookAt(player);
-
-            if (attackTimer >= attackCooldown)
+            // chase player
+            if (distance > attackRange)
             {
-                animator.SetTrigger("Attack");
+                agent.isStopped = false;
+                agent.SetDestination(player.position);
+            }
+            else
+            {
+                // stop and attack
+                agent.isStopped = true;
 
-                player.GetComponent<PlayerController>().TakeDamage(damage);
+                transform.LookAt(player);
 
-                attackTimer = 0;
+                attackTimer += Time.deltaTime;
+
+                if (attackTimer >= attackCooldown)
+                {
+                    animator.SetTrigger("Attack");
+
+                    player.GetComponent<PlayerController>().TakeDamage(damage);
+
+                    attackTimer = 0;
+                }
             }
         }
     }
