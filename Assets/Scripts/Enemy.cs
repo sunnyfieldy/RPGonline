@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 {
     public Transform healthBar;
     public int maxHealth = 30;
+
+    private bool dead = false;
     
     private int health;
     private NavMeshAgent agent;
@@ -24,11 +26,18 @@ public class Enemy : MonoBehaviour
     private float attackTimer;
     private Transform player;
 
+    public GameObject hitParticles;
+
+    public AudioClip hitSound;
+    private AudioSource audioSource;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
 
         animator = GetComponentInChildren<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
 
         health = maxHealth;
         StartCoroutine(WalkAround());
@@ -63,12 +72,20 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
-            //TODO: death animation
-            //TODO: loot
-            Destroy(gameObject);
+
+            dead = true;
+
+            agent.isStopped = true;
+
+            animator.SetTrigger("Death");
+
+            Destroy(gameObject, 2f);
         }
         
         healthBar.localScale = new Vector3((float)health / maxHealth, 1, 1);
+
+        Instantiate(hitParticles, transform.position + Vector3.up, Quaternion.identity);
+        audioSource.PlayOneShot(hitSound);
     }
 
     public bool IsDead()
@@ -78,6 +95,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (dead) return;
+
         if (player == null) return;
 
         animator.SetFloat("Speed", agent.velocity.magnitude);

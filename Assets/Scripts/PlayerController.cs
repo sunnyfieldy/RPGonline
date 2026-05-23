@@ -33,12 +33,17 @@ public class PlayerController : MonoBehaviour
     private Equipment equipment;
 
     private Animator animator;
+
+    public AudioClip attackSound;
+    private AudioSource audioSource;
     void Start()
     {
         equipment = GetComponent<Equipment>();
         agent = GetComponent<NavMeshAgent>();
         aimVisual.gameObject.SetActive(false);
         attackTimer = attackInterval;
+
+        audioSource = GetComponent<AudioSource>();
 
         animator = GetComponent<Animator>();
 
@@ -82,6 +87,8 @@ public class PlayerController : MonoBehaviour
         if (attackTimer >= attackInterval)
         {
             animator.SetTrigger("Attack");
+
+            audioSource.PlayOneShot(attackSound);
 
             attackTimer = 0;
 
