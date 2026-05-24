@@ -114,7 +114,7 @@ public class DayNightCycle : MonoBehaviour
 
                 RenderSettings.fogColor = new Color(0.02f, 0.02f, 0.05f);
 
-                RenderSettings.fogDensity = 0.04f;
+                RenderSettings.fogDensity = 0.05f;
                 break;
 
             // early morning
@@ -123,7 +123,7 @@ public class DayNightCycle : MonoBehaviour
 
                 RenderSettings.fogColor = new Color(0.3f, 0.3f, 0.4f);
 
-                RenderSettings.fogDensity = 0.025f;
+                RenderSettings.fogDensity = 0.03f;
                 break;
 
             // sunrise
@@ -132,7 +132,7 @@ public class DayNightCycle : MonoBehaviour
 
                 RenderSettings.fogColor = new Color(0.7f, 0.5f, 0.4f);
 
-                RenderSettings.fogDensity = 0.015f;
+                RenderSettings.fogDensity = 0.02f;
                 break;
 
             // day
@@ -143,7 +143,7 @@ public class DayNightCycle : MonoBehaviour
 
                 RenderSettings.fogColor = new Color(0.8f, 0.7f, 0.6f);
 
-                RenderSettings.fogDensity = 0.008f;
+                RenderSettings.fogDensity = 0.01f;
                 break;
 
             // sunset
@@ -161,7 +161,7 @@ public class DayNightCycle : MonoBehaviour
 
                 RenderSettings.fogColor = new Color(0.05f, 0.05f, 0.1f);
 
-                RenderSettings.fogDensity = 0.03f;
+                RenderSettings.fogDensity = 0.04f;
                 break;
         }
     }
