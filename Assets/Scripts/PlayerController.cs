@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject gameOverPanel;
     private bool dead = false;
+    public bool IsDead => dead;
     void Start()
     {
         equipment = GetComponent<Equipment>();
@@ -235,6 +236,8 @@ public class PlayerController : MonoBehaviour
         gameOverPanel.SetActive(true);
 
         equipment.ClearWeapon();
+
+        inventory.ClearInventory();
 
         Debug.Log("Player died");
     }

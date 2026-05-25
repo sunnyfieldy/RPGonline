@@ -39,4 +39,10 @@ public class Inventory : MonoBehaviour
            onInventoryChanged?.Invoke();
        }
    }
+    public void ClearInventory()
+    {
+        slots.Clear();
+
+        onInventoryChanged?.Invoke();
+    }
 }

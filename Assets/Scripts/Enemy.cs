@@ -101,6 +101,15 @@ public class Enemy : MonoBehaviour
 
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
+        if (player.GetComponent<PlayerController>().IsDead)
+        {
+            agent.isStopped = true;
+
+            animator.SetFloat("Speed", 0);
+
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, player.position);
 
         // detect player
