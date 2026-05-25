@@ -20,4 +20,11 @@ public class Equipment : MonoBehaviour
     {
         return equipedWeapon != null ? equipedWeapon.damage : 5;
     }
+
+    public void ClearWeapon()
+    {
+        equipedWeapon = null;
+
+        onEquipmentChanged?.Invoke();
+    }
 }

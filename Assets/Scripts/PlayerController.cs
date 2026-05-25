@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip attackSound;
     private AudioSource audioSource;
+
+    public DamageEffect damageEffect;
+
+    public GameObject gameOverPanel;
+    private bool dead = false;
     void Start()
     {
         equipment = GetComponent<Equipment>();
@@ -53,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (dead) return;
+
         HandleInput();
         HandleInteraction();
         HandleCombat();
@@ -202,6 +209,11 @@ public class PlayerController : MonoBehaviour
             currentHealth = 0;
 
         UpdateHealthBar();
+        if (damageEffect != null)
+        {
+            Debug.Log("FLASH");
+            damageEffect.ShowDamage();
+        }
 
         if (currentHealth <= 0)
         {
@@ -216,10 +228,14 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player died");
+        dead = true;
 
-        // optional:
-        // disable movement
-        // death animation
+        agent.isStopped = true;
+
+        gameOverPanel.SetActive(true);
+
+        equipment.ClearWeapon();
+
+        Debug.Log("Player died");
     }
 }
