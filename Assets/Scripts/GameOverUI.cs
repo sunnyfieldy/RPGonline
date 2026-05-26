@@ -7,6 +7,7 @@ public class GameOverUI : MonoBehaviour
 {
     public void RestartGame()
     {
+        Debug.Log("BUTTON CLICKED");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

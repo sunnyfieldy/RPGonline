@@ -1260,7 +1260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &544667603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2526,7 +2526,6 @@ GameObject:
   - component: {fileID: 1188401461}
   - component: {fileID: 1188401460}
   - component: {fileID: 1188401459}
-  - component: {fileID: 1188401462}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2598,7 +2597,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1188401462}
+      - m_Target: {fileID: 1462371969}
         m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
@@ -2648,18 +2647,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188401457}
   m_CullTransparentMesh: 1
---- !u!114 &1188401462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188401457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687d13b86af5d76448d8c31d07bf2597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1200137506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3403,13 +3390,14 @@ GameObject:
   - component: {fileID: 1462371965}
   - component: {fileID: 1462371968}
   - component: {fileID: 1462371967}
+  - component: {fileID: 1462371969}
   m_Layer: 5
   m_Name: Game over panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1462371965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3469,6 +3457,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462371964}
   m_CullTransparentMesh: 1
+--- !u!114 &1462371969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462371964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687d13b86af5d76448d8c31d07bf2597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1576704495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3860,7 +3860,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -4294,7 +4294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1915035341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4411,7 +4411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

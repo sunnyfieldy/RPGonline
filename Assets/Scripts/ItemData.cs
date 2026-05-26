@@ -12,4 +12,6 @@ public class ItemData : ScriptableObject
 
     public bool isWeapon;
     public int damage;
+
+    public bool isChest;
 }

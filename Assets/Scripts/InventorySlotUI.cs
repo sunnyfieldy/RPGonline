@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class InventorySlotUI : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class InventorySlotUI : MonoBehaviour
     public TextMeshProUGUI amountText;
     
     private InventorySlot currentSlot;
+
+    public ItemData[] chestRewards;
 
     private void Start()
     {
@@ -51,5 +54,29 @@ public class InventorySlotUI : MonoBehaviour
         {
             equipment.EquipWeapon(currentSlot.item);
         }
+
+        if (currentSlot.item.isChest)
+        {
+            OpenChest();
+        }
+    }
+
+    void OpenChest()
+    {
+        Debug.Log("Chest Opened!");
+
+        ItemData reward =
+            chestRewards[Random.Range(0, chestRewards.Length)];
+
+        inventory.AddItem(reward);
+
+        currentSlot.amount--;
+
+        if (currentSlot.amount <= 0)
+        {
+            inventory.slots.Remove(currentSlot);
+        }
+
+        inventory.onInventoryChanged?.Invoke();
     }
 }

@@ -148,6 +148,16 @@ public class PlayerController : MonoBehaviour
         //print("Picked up " + item.name);
         var worldItem = item.GetComponent<ItemWorld>();
         inventory.AddItem(worldItem.data);
+
+        if (worldItem.data.isWeapon)
+        {
+            if (equipment.equipedWeapon == null ||
+                worldItem.data.damage > equipment.equipedWeapon.damage)
+            {
+                equipment.EquipWeapon(worldItem.data);
+            }
+        }
+
         Destroy(item.gameObject);
     }
 
@@ -239,6 +249,7 @@ public class PlayerController : MonoBehaviour
 
         inventory.ClearInventory();
 
-        Debug.Log("Player died");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
